@@ -10,7 +10,7 @@ void displayHeader();
 // PROMISES
 //    Displays the introcution to the screen.
 
-int readData(FlowList *list, const char *file_path);
+int readData(FlowList list, const char *file_path);
 // PROMISES
 //    Reads flow records from a input file,
 //    inserts them into the list of records, and

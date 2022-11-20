@@ -13,28 +13,28 @@ FlowList::~FlowList()
   destroy();
 };
 
-void FlowList::remove(const ListItem& itemA)
+void FlowList::remove(const int year)
 {
     // if list is empty, do nothing
-    if (headM == 0 || itemA.year < headM->item.year)
+    if (headM == 0 || year < headM->item.year)
         return;
     
     Node *doomed_node = 0;
     
-    if (itemA.year == headM->item.year) {
+    if (year == headM->item.year) {
         doomed_node = headM;
         headM = headM->next;
     }
     else {
         Node *before = headM;
         Node *maybe_doomed = headM->next;
-        while(maybe_doomed != 0 && itemA.year > maybe_doomed->item.year) {
+        while(maybe_doomed != 0 && year > maybe_doomed->item.year) {
             before = maybe_doomed;
             maybe_doomed = maybe_doomed->next;
         }
         // point three
         // set doomed_node and splice list
-        if (itemA.year == maybe_doomed->item.year){
+        if (year == maybe_doomed->item.year){
             doomed_node = maybe_doomed;
             before->next = maybe_doomed->next;
         }

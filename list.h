@@ -16,17 +16,17 @@ struct Node {
 class FlowList{
   public:
     FlowList(); // PROMISES: Creates empty list.
-    FlowList(const FlowList&);
-    FlowList& operator=(const FlowList&); // PROMISES: Copies a list.
+    //FlowList(const FlowList& source);
+    //FlowList& operator=(const FlowList& rhs); // PROMISES: Copies a list.
     ~FlowList(); // PROMISES: Deletes a list.
 
-    void add(const ListItem& itemA);
+    void insert(const int year, const double flow);
     // PROMISES:
     //    A node with a copy of itemA is added in 
     //    a way that preserves the nondecreasing 
     //    order of items in nodes.
 
-    void remove(const ListItem& itemA);
+    void remove(const int year);
     //  PROMISES:
     //    If no node has an item matching itemA, 
     //    list is unchanged.
