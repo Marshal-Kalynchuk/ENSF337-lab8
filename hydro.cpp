@@ -16,6 +16,12 @@ int main(void){
   cout << num_records << endl;
   displayHeader();
   pressEnter();
+
+  flow_list.print();
+  flow_list.insert(2022, 300.24);
+  flow_list.remove(2001);
+  flow_list.print();
+
   while(1){
     switch(menu()){
       case 1:
@@ -23,6 +29,8 @@ int main(void){
       case 3:
       case 4:
       case 5:
+        cout << "Program terminated" << endl;
+        break;
       default:
         cout << "Invalid input" << endl;
         pressEnter();
