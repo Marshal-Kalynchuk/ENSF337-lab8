@@ -84,9 +84,17 @@ void OLList::remove(const ListItem& itemA)
             maybe_doomed = maybe_doomed->next;
         }
         // point three
+        // set doomed and splice list
+        if (itemA == maybe_doomed->item){
+            doomed_node = maybe_doomed;
+            before->next = maybe_doomed->next;
+        }
+        // Doesn't exist
+        else
+            return;
     }
-    // the remaining part of this function is missing. As part of exercise A
-    // students are supposed to complete the rest of the definition of this function.
+    // Remove node
+    delete doomed_node;
 }
 
 void OLList::destroy()
@@ -97,7 +105,6 @@ void OLList::destroy()
         delete headM;
         headM = p;
     }
-    headM = 0;
 }
 
 void OLList::copy(const OLList& source)
