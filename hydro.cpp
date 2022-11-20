@@ -7,8 +7,11 @@
 #include "list.h"
 using namespace std;
 
-void main(void){
-
+int main(void){
+  displayHeader();
+  pressEnter();
+  int choice = menu();
+  return 0;
 };
 
 void displayHeader(void){
@@ -16,7 +19,6 @@ void displayHeader(void){
   cout << "Version: 1.0" << endl;
   cout << "Lab section: B05" << endl;
   cout << "Produced by: Marshal Kalynchuk" << endl;
-  cout << "<<<< Press Enter to continue >>>>" << endl;
 };
 
 int readData(FlowList *list, const char *file_path){
@@ -24,19 +26,22 @@ int readData(FlowList *list, const char *file_path){
 };
 
 int menu(void){
-  int choice = 0;
+  int choice;
   while(true) {
     cout << "1. Display flow list, and the average" << endl;
     cout << "2. Add data." << endl;
     cout << "3. Save data into the file" << endl;
     cout << "4. Remove data" << endl;
     cout << "5. Quit" << endl;
-    cout << "Enter your choice" << endl;
+    cout << "Enter your choice (1, 2, 3, 4, or 5):" << endl;
     cin >> choice;
-    if (choice > 0 && choice <= 5)
+    if (!cin.fail() && choice > 0 && choice <= 5)
       return choice;
-    else
-      cout << "Invalid input" << endl;
+    else {
+      cin.clear();
+      cin.ignore(10000, '\n');
+      cout << "\nInvalid input\n" << endl;
+    };
   };
 };
 
