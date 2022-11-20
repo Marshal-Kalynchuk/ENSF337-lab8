@@ -17,9 +17,9 @@ void FlowList::print() const
 {
     cout << '[';
     if (headM != 0) {
-        cout << ' ' << headM->item.flow << ", " << headM->item.flow;
+        cout << " [" << headM->item.year << ", " << headM->item.flow << ']';
         for (const Node *p = headM->next; p != 0; p = p->next)
-            cout << ", " << p->item.year << ", " << p->item.flow;
+            cout << ", [" << p->item.year << ", " << p->item.flow << ']';
     }
     cout << " ]\n";
 };

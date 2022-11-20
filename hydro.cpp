@@ -10,19 +10,17 @@ using namespace std;
 
 int main(void){
   FlowList flow_list;
-  int num_records;
+  int num_records = 0;
   char* file_path = "./flow.txt";
-  num_records = readData(flow_list, file_path);
-  cout << num_records << endl;
+  num_records = readData(&flow_list, file_path);
+  int quit = 0;
   displayHeader();
   pressEnter();
 
-  flow_list.print();
-  flow_list.insert(2022, 300.24);
-  flow_list.remove(2001);
+  cout << num_records << endl;
   flow_list.print();
 
-  while(1){
+  while(!quit){
     switch(menu()){
       case 1:
       case 2:
@@ -30,6 +28,7 @@ int main(void){
       case 4:
       case 5:
         cout << "Program terminated" << endl;
+        quit = 1;
         break;
       default:
         cout << "Invalid input" << endl;
@@ -46,24 +45,23 @@ void displayHeader(void){
   cout << "Produced by: Marshal Kalynchuk" << endl;
 };
 
-int readData(FlowList list, const char *file_path){
+int readData(FlowList* flow_list, const char *file_path){
   ifstream file(file_path);
   if (!file){
     cout << "Error: failed to open file: " << file_path << endl;
     exit(1);
   };
-
   int year;
   double flow;
-  while( !file.eof()){
+  int num_records = 0;
+  while(!file.eof()){
     file >> year;
     file >> flow;
-    cout << year << " " << flow << endl;
-    // Insert node...
+    (*flow_list).insert(year, flow);
+    num_records++;
   }
-
-
   file.close();
+  return num_records;
 };
 
 int menu(void){
