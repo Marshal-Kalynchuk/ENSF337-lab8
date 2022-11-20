@@ -21,7 +21,7 @@ void FlowList::remove(const ListItem& itemA)
     
     Node *doomed_node = 0;
     
-    if (itemA == headM->item) {
+    if (itemA.year == headM->item.year) {
         doomed_node = headM;
         headM = headM->next;
     }
@@ -34,7 +34,7 @@ void FlowList::remove(const ListItem& itemA)
         }
         // point three
         // set doomed_node and splice list
-        if (itemA == maybe_doomed->item){
+        if (itemA.year == maybe_doomed->item.year){
             doomed_node = maybe_doomed;
             before->next = maybe_doomed->next;
         }
