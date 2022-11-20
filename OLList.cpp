@@ -91,12 +91,12 @@ void OLList::remove(const ListItem& itemA)
 
 void OLList::destroy()
 {
-    
-    // this function is not properly designed. As part of the exercise A
-    // students are supposed to remove the folloiwng lines and
-    // complete the definition of this helper function.
-    cout << "OLList::destroy was called but isn't ready for use"
-    << "--program is terminated.\n";
+    Node* p = headM;
+    while(p != nullptr){
+        p = p->next;
+        delete headM;
+        headM = p;
+    }
     headM = 0;
 }
 
@@ -105,11 +105,9 @@ void OLList::copy(const OLList& source)
     // Setup iterable pointer
     Node* p = source.headM;
     // if empty, set empty
-    if(p == 0){
-        headM = 0;
+    if(p == 0)
         return;
-    }
-
+    
     // Init first node and copy first node
     Node* new_node = new Node;
     new_node->item = p->item;
