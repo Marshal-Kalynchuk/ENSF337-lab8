@@ -104,32 +104,32 @@ void OLList::copy(const OLList& source)
 {
     // Setup iterable pointer
     Node* p = source.headM;
-    // Unless empty, copy source nodes into this list
-    if(p != 0){
-
-        // Init first node and copy first node
-        Node* new_node = new Node;
-        new_node->item = p->item;
-        // Setup prev_node
-        Node* prev_node = new_node;
-        // Set headM
-        headM = new_node;
-        // First iteration of source list
-        p = p->next;
-        while (p != nullptr){
-            // New node and copying
-            new_node = new Node;
-            new_node->item = p->item;
-            // Linking prev node with new node
-            prev_node->next = new_node;
-            // Setting prev_node
-            prev_node = new_node;
-            // Iterating source list
-            p = p->next;
-        }
-    // If source is empty, then headM is set to zero
-    } else 
+    // if empty, set empty
+    if(p == 0){
         headM = 0;
+        return;
+    }
+
+    // Init first node and copy first node
+    Node* new_node = new Node;
+    new_node->item = p->item;
+    // Setup prev_node
+    Node* prev_node = new_node;
+    // Set headM
+    headM = new_node;
+    // First iteration of source list
+    p = p->next;
+    while (p != nullptr){
+        // New node and copying
+        new_node = new Node;
+        new_node->item = p->item;
+        // Linking prev node with new node
+        prev_node->next = new_node;
+        // Setting prev_node
+        prev_node = new_node;
+        // Iterating source list
+        p = p->next;
+    }
 }
 
 
