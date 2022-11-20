@@ -13,6 +13,39 @@ FlowList::~FlowList()
   destroy();
 };
 
+void FlowList::print() const
+{
+    cout << '[';
+    if (headM != 0) {
+        cout << ' ' << headM->item.flow << ", " << headM->item.flow;
+        for (const Node *p = headM->next; p != 0; p = p->next)
+            cout << ", " << p->item.year << ", " << p->item.flow;
+    }
+    cout << " ]\n";
+};
+
+void FlowList::insert(const int year, const double flow)
+{
+    Node *new_node = new Node;
+    new_node->item.year = year;
+    new_node->item.flow = flow;
+    
+    if (headM == 0 || year <= headM->item.year ) {
+        new_node->next = headM;
+        headM = new_node;
+    }
+    else {
+        Node *before = headM;      // will point to node in front of new node
+        Node *after = headM->next; // will be 0 or point to node after new node
+        while(after != 0 && year > after->item.year) {
+            before = after;
+            after = after->next;
+        }
+        new_node->next = after;
+        before->next = new_node;
+    }
+}
+
 void FlowList::remove(const int year)
 {
     // if list is empty, do nothing
@@ -32,7 +65,6 @@ void FlowList::remove(const int year)
             before = maybe_doomed;
             maybe_doomed = maybe_doomed->next;
         }
-        // point three
         // set doomed_node and splice list
         if (year == maybe_doomed->item.year){
             doomed_node = maybe_doomed;
