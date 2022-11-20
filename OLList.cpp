@@ -102,18 +102,34 @@ void OLList::destroy()
 
 void OLList::copy(const OLList& source)
 {
-    // this function is not properly designed. As part of the exercise A
-    // students are supposed to remove the folloiwng lines and
-    // complete the definition of this helper function.
-    
-    // The only effect of the next line is to tell the compiler
-    // not to generate an "unused argument" warning.  Don't leave it
-    // it in your solution.
-    (void) source;
-    
-    cout << "OLList::copy was called but isn't ready for use"
-    << "--program is terminated.\n";
-    exit(1);
+    // Setup iterable pointer
+    Node* p = source.headM;
+    // Unless empty, copy source nodes into this list
+    if(p != 0){
+
+        // Init first node and copy first node
+        Node* new_node = new Node;
+        new_node->item = p->item;
+        // Setup prev_node
+        Node* prev_node = new_node;
+        // Set headM
+        headM = new_node;
+        // First iteration of source list
+        p = p->next;
+        while (p != nullptr){
+            // New node and copying
+            new_node = new Node;
+            new_node->item = p->item;
+            // Linking prev node with new node
+            prev_node->next = new_node;
+            // Setting prev_node
+            prev_node = new_node;
+            // Iterating source list
+            p = p->next;
+        }
+    // If source is empty, then headM is set to zero
+    } else 
+        headM = 0;
 }
 
 
