@@ -6,30 +6,32 @@
 
 #include "list.h"
 
-void displayHeader(void);
+void displayHeader();
 // PROMISES
 //    Displays the introcution to the screen.
 
-void readData(void);
+int readData(FlowList *list, const char *file_path);
 // PROMISES
 //    Reads flow records from a input file,
 //    inserts them into the list of records, and
 //    returns the number of records in the file.
 
-void menu(void);
+int menu(void);
 // PROMISES
 //    Displays a menu and return the users choice.
+//    (Integer from 1 to 5)
 
 void display(void);
 //  PROMISES
 //    Displays the years and flows, and shows the
 //    average flows in the list.
 
-void addData(void);
+int addData(FlowList *list);
 //  PROMISES
 //    Prompts the user to enter new data, inserts
 //    the new data into the list, and updates the
 //    number of records.
+//    Returns the number of records
 
 void removeData(void);
 // PROMISES
@@ -41,7 +43,7 @@ double average(FlowList *list);
 // PROMISES
 //   Returns the flow average in the given list.
 
-void saveData(void);
+void saveData(FlowList *list, const char *file_path);
 //  PROMISES
 //    Writes the contents of the linked list to a txt file.
 
