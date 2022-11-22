@@ -28,7 +28,6 @@ int main(void){
         pressEnter();
         break;
       case 3:
-        break;
         saveData(&flow_list, file_path);
         pressEnter();
         break;
@@ -151,7 +150,18 @@ double average(double sum, int count){
 };
 
 void saveData(FlowList *list, const char *file_path){
-
+  ofstream file(file_path);
+  if (!file){
+    cout << "Error: failed to open file " << file_path << endl;
+    return;
+  }
+  ListItem item = (*list).generate();
+  while(item.year != -99 && item.flow != -99){
+    file << " " << item.year << " " << item.flow;
+    item = (*list).generate();
+  }
+  cout << "Data successfully saved into file." << endl;
+  file.close();
 };
 
 void pressEnter(void){
