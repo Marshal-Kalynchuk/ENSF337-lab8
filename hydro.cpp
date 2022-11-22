@@ -17,15 +17,27 @@ int main(void){
   displayHeader();
   pressEnter();
 
-  cout << num_records << endl;
-  flow_list.print();
-
   while(!quit){
     switch(menu()){
       case 1:
+        display(&flow_list);
+        pressEnter();
+        break;
       case 2:
+        break;
+        num_records = addData(&flow_list);
+        pressEnter();
+        break;
       case 3:
+        break;
+        saveData(&flow_list, file_path);
+        pressEnter();
+        break;
       case 4:
+        break;
+        removeData();
+        pressEnter();
+        break;
       case 5:
         cout << "Program terminated" << endl;
         quit = 1;
@@ -78,8 +90,9 @@ int menu(void){
   return choice;
 };
 
-void display(void){
-
+void display(FlowList *list){
+  (*list).print();
+  cout << average(list);
 };
 
 int addData(FlowList *list){
@@ -91,7 +104,15 @@ void removeData(void){
 };
 
 double average(FlowList *list){
-
+  ListItem item = (*list).generate();
+  int count = 0;
+  double sum = 0;
+  while(item.year != -99 && item.flow != -99){
+    count++;
+    sum += item.flow;
+    item = (*list).generate();
+  }
+  return sum / count;
 };
 
 void saveData(FlowList *list, const char *file_path){

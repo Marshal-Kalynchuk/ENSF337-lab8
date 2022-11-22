@@ -40,9 +40,14 @@ class FlowList{
     // NOTE:
     //   This is different from the print function presented in lectures.
 
+    ListItem generate();
+    // PROMISES:
+    //    Cycles through the list, returning the list items of the list
+    //    Return ListItem{-99,-99} at the end of the list or if the list is empty.
 
   private:
     Node* headM;
+    Node* posM;
     // From OLList
     void destroy(); // PROMISES: destoyes a list.
     void copy(const FlowList& source); // PROMISES: list becomes copy of source.

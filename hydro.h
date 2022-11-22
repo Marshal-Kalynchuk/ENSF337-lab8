@@ -21,7 +21,7 @@ int menu(void);
 //    Displays a menu and return the users choice.
 //    (Integer from 1 to 5)
 
-void display(void);
+void display(FlowList* list);
 //  PROMISES
 //    Displays the years and flows, and shows the
 //    average flows in the list.

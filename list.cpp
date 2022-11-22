@@ -6,7 +6,7 @@
 using namespace std;
 #include "list.h"
 
-FlowList::FlowList(): headM(0) {};
+FlowList::FlowList(): headM(0), posM(0) {};
 
 FlowList::~FlowList()
 {
@@ -78,6 +78,10 @@ void FlowList::remove(const int year)
     delete doomed_node;
 };
 
+ListItem FlowList::generate() {
+    posM = posM == nullptr ? headM : posM->next;
+    return posM == nullptr ? ListItem {-99,-99} : posM->item;
+};
 
 void FlowList::destroy()
 {
