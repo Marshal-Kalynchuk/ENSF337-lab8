@@ -103,5 +103,5 @@ int FlowList::destroy()
         delete headM;
         headM = p;
     };
-    return (num_records = 0);
+    return 1;
 };

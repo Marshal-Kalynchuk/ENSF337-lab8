@@ -16,8 +16,6 @@ struct Node {
 class FlowList{
   public:
     FlowList(); // PROMISES: Creates empty list.
-    //FlowList(const FlowList& source);
-    //FlowList& operator=(const FlowList& rhs); // PROMISES: Copies a list.
     ~FlowList(); // PROMISES: Deletes a list.
 
     int insert(const int year, const double flow);
@@ -54,8 +52,8 @@ class FlowList{
     Node* headM;
     Node* posM;
     int num_records = 0;
-    // From OLList
-    int destroy(); // PROMISES: destoyes a list.
-    int copy(const FlowList& source); // PROMISES: list becomes copy of source.
+    int destroy(); 
+    // PROMISES: destoyes a list.
+    //    Returns 1 after the list is destroyed
 };
 #endif
