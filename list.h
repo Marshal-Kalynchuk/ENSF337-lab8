@@ -46,6 +46,9 @@ class FlowList{
     // PROMISES:
     //    Cycles through the list, returning the list items of the list
     //    Return ListItem{-99,-99} at the end of the list or if the list is empty.
+    int get_num_records();
+    // PROMISES:
+    //    Return the number of records in the list.
 
   private:
     Node* headM;

@@ -85,6 +85,10 @@ ListItem FlowList::generate() {
     return posM == nullptr ? ListItem {-99,-99} : posM->item;
 };
 
+int FlowList::get_num_records(){
+    return num_records;
+};
+
 int FlowList::destroy()
 {
     Node* p = headM;

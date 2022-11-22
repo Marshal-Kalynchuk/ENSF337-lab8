@@ -24,8 +24,8 @@ int main(void){
         pressEnter();
         break;
       case 2:
-        break;
         num_records = addData(&flow_list);
+        cout << "num_records: " << num_records << endl;
         pressEnter();
         break;
       case 3:
@@ -83,7 +83,7 @@ int menu(void){
   cout << "3. Save data into the file" << endl;
   cout << "4. Remove data" << endl;
   cout << "5. Quit" << endl;
-  cout << "Enter your choice (1, 2, 3, 4, or 5):" << endl;
+  cout << "Enter your choice (1, 2, 3, 4, or 5): ";
   cin >> choice;
   cin.clear();
   cin.ignore(10000, '\n');
@@ -92,11 +92,28 @@ int menu(void){
 
 void display(FlowList *list){
   (*list).print();
-  cout << average(list);
+  cout << "Average: " << average(list) << endl;;
 };
 
 int addData(FlowList *list){
-
+  int year, num_records;
+  double flow;
+  cout << "\nEntering data... Warning, will overwrite exisiting data of the same year." << endl;
+  cout << "Please enter a year: ";
+  cin >> year;
+  cout << "Please enter a flow: ";
+  cin >> flow;
+  if (cin.fail()){
+    cout << "Invalid data" << endl;
+    num_records = (*list).get_num_records();
+  }
+  else {
+    cout << "Data entered: " << year << ", " << flow << endl;
+    num_records = (*list).insert(year, flow);
+  }
+  cin.clear();
+  cin.ignore(10000, '\n');
+  return num_records;
 };
 
 void removeData(void){
