@@ -24,7 +24,7 @@ void FlowList::print() const
     cout << " ]\n";
 };
 
-void FlowList::insert(const int year, const double flow)
+int FlowList::insert(const int year, const double flow)
 {
     Node *new_node = new Node;
     new_node->item.year = year;
@@ -44,13 +44,14 @@ void FlowList::insert(const int year, const double flow)
         new_node->next = after;
         before->next = new_node;
     }
+    return ++num_records;
 }
 
-void FlowList::remove(const int year)
+int FlowList::remove(const int year)
 {
     // if list is empty, do nothing
     if (headM == 0 || year < headM->item.year)
-        return;
+        return num_records;
     
     Node *doomed_node = 0;
     
@@ -72,10 +73,11 @@ void FlowList::remove(const int year)
         }
         // Doesn't exist
         else
-            return;
+            return num_records;
     }
     // Remove node
     delete doomed_node;
+    return ++num_records;
 };
 
 ListItem FlowList::generate() {
@@ -83,7 +85,7 @@ ListItem FlowList::generate() {
     return posM == nullptr ? ListItem {-99,-99} : posM->item;
 };
 
-void FlowList::destroy()
+int FlowList::destroy()
 {
     Node* p = headM;
     while(p != nullptr){
@@ -91,4 +93,5 @@ void FlowList::destroy()
         delete headM;
         headM = p;
     };
+    return (num_records = 0);
 };

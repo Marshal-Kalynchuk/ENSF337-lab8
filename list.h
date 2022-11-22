@@ -20,18 +20,20 @@ class FlowList{
     //FlowList& operator=(const FlowList& rhs); // PROMISES: Copies a list.
     ~FlowList(); // PROMISES: Deletes a list.
 
-    void insert(const int year, const double flow);
+    int insert(const int year, const double flow);
     // PROMISES:
     //    A node with a copy of itemA is added in 
     //    a way that preserves the nondecreasing 
     //    order of items in nodes.
+    //    Return number of records
 
-    void remove(const int year);
+    int remove(const int year);
     //  PROMISES:
     //    If no node has an item matching itemA, 
     //    list is unchanged.
     //    Otherwise exactly one node with 
     //    its item == itemA is removed.
+    //    Returns number of records
 
     void print() const;
     // PROMISES:
@@ -48,8 +50,9 @@ class FlowList{
   private:
     Node* headM;
     Node* posM;
+    int num_records = 0;
     // From OLList
-    void destroy(); // PROMISES: destoyes a list.
-    void copy(const FlowList& source); // PROMISES: list becomes copy of source.
+    int destroy(); // PROMISES: destoyes a list.
+    int copy(const FlowList& source); // PROMISES: list becomes copy of source.
 };
 #endif
