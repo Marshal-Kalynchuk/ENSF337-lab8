@@ -25,7 +25,7 @@ class FlowList{
     //    A node with a copy of itemA is added in 
     //    a way that preserves the nondecreasing 
     //    order of items in nodes.
-    //    Return number of records
+    //    Return 1 if successfully added, 0 otherwise.
 
     int remove(const int year);
     //  PROMISES:

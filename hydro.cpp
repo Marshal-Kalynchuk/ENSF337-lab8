@@ -58,22 +58,28 @@ void displayHeader(void){
 };
 
 int readData(FlowList* flow_list, const char *file_path){
+  // Open file
   ifstream file(file_path);
   if (!file){
     cout << "Error: failed to open file: " << file_path << endl;
     exit(1);
   };
+
   int year;
   double flow;
   int num_records = 0;
+  // Read data and insert into flow list
   while(!file.eof()){
     file >> year;
     file >> flow;
-    (*flow_list).insert(year, flow);
-    num_records++;
+    if(!(*flow_list).insert(year, flow)){
+      cout << "Error: duplicate data. Program terminated" << endl;
+      exit(1);
+    }
   }
+  // Clearn up and return num records
   file.close();
-  return num_records;
+  return (*flow_list).get_num_records();
 };
 
 int menu(void){
@@ -96,24 +102,25 @@ void display(FlowList *list){
 };
 
 int addData(FlowList *list){
-  int year, num_records;
+  int year;
   double flow;
-  cout << "\nEntering data... Warning, will overwrite exisiting data of the same year." << endl;
-  cout << "Please enter a year: ";
+
+  // User input
+  cout << "\nPlease enter a year: ";
   cin >> year;
-  cout << "Please enter a flow: ";
+  cout << "Please enter the flow: ";
   cin >> flow;
-  if (cin.fail()){
+
+  // Inserting data into the flow list
+  if (cin.fail())
     cout << "Invalid data" << endl;
-    num_records = (*list).get_num_records();
-  }
-  else {
-    cout << "Data entered: " << year << ", " << flow << endl;
-    num_records = (*list).insert(year, flow);
-  }
+  else
+    cout << ((*list).insert(year, flow) ? "New record inserted successfully" : "Error: duplicate data.") << endl;
+
+  // Clean up and return num records
   cin.clear();
   cin.ignore(10000, '\n');
-  return num_records;
+  return (*list).get_num_records();
 };
 
 void removeData(void){
