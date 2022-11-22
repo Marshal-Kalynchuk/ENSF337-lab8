@@ -33,7 +33,7 @@ int addData(FlowList *list);
 //    number of records.
 //    Returns the number of records
 
-void removeData(void);
+int removeData(FlowList* flow_list);
 // PROMISES
 //    Prompts the user to indicate what year to be
 //    removed, removes a single record from the list,

@@ -70,7 +70,7 @@ int FlowList::remove(const int year)
             maybe_doomed = maybe_doomed->next;
         }
         // set doomed_node and splice list
-        if (year == maybe_doomed->item.year){
+        if (maybe_doomed != 0 && year == maybe_doomed->item.year){
             doomed_node = maybe_doomed;
             before->next = maybe_doomed->next;
         }

@@ -25,7 +25,6 @@ int main(void){
         break;
       case 2:
         num_records = addData(&flow_list);
-        cout << "num_records: " << num_records << endl;
         pressEnter();
         break;
       case 3:
@@ -34,8 +33,7 @@ int main(void){
         pressEnter();
         break;
       case 4:
-        break;
-        removeData();
+        num_records = removeData(&flow_list);
         pressEnter();
         break;
       case 5:
@@ -123,8 +121,14 @@ int addData(FlowList *list){
   return (*list).get_num_records();
 };
 
-void removeData(void){
-
+int removeData(FlowList* flow_list){
+  int year;
+  cout << "\nPlease enter the year you would like to remove: ";
+  cin >> year;
+  cout  << ((*flow_list).remove(year) ? "Record was successfully removed." : "Error: no such data.") << endl;
+  cin.clear();
+  cin.ignore(10000, '\n');
+  return (*flow_list).get_num_records();
 };
 
 double average(FlowList *list){
