@@ -95,8 +95,23 @@ int menu(void){
 };
 
 void display(FlowList *list){
-  (*list).print();
-  cout << "Average: " << average(list) << endl;;
+  ListItem item = (*list).generate();
+  if (item.year == -99 && item.flow == -99){
+    cout << "\nFlow list empty" << endl;
+    return;
+  }
+  int count = 0;
+  double sum = 0;
+
+  cout << "\nYear    Flow (in billions of cubic meters): " << endl;
+
+  while(item.year != -99 && item.flow != -99){
+    count++;
+    sum += item.flow;
+    cout << item.year << "     " << item.flow << endl;
+    item = (*list).generate();
+  }
+  cout << "\nThe annual average of the flow is: " << average(sum, count) << " billion cubic meters\n" << endl;
 };
 
 int addData(FlowList *list){
@@ -131,15 +146,7 @@ int removeData(FlowList* flow_list){
   return (*flow_list).get_num_records();
 };
 
-double average(FlowList *list){
-  ListItem item = (*list).generate();
-  int count = 0;
-  double sum = 0;
-  while(item.year != -99 && item.flow != -99){
-    count++;
-    sum += item.flow;
-    item = (*list).generate();
-  }
+double average(double sum, int count){
   return sum / count;
 };
 

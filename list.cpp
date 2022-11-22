@@ -30,8 +30,10 @@ int FlowList::insert(const int year, const double flow)
     new_node->item.year = year;
     new_node->item.flow = flow;
     
-    if (headM == 0) 
+    if (headM == 0 || year < headM->item.year){
+        new_node->next = headM;
         headM = new_node;
+    }
     else {
         Node *before = headM;      // will point to node in front of new node
         Node *after = headM->next; // will be 0 or point to node after new node

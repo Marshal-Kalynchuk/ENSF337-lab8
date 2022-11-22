@@ -39,9 +39,9 @@ int removeData(FlowList* flow_list);
 //    removed, removes a single record from the list,
 //    and updates the number of records.
 
-double average(FlowList *list);
+double average(double sum, int count);
 // PROMISES
-//   Returns the flow average in the given list.
+//   Returns the average of sum over count.
 
 void saveData(FlowList *list, const char *file_path);
 //  PROMISES
