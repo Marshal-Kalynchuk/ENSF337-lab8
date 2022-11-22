@@ -54,7 +54,7 @@ int FlowList::remove(const int year)
 {
     // if list is empty, do nothing
     if (headM == 0 || year < headM->item.year)
-        return num_records;
+        return 0;
     
     Node *doomed_node = 0;
     
@@ -76,11 +76,12 @@ int FlowList::remove(const int year)
         }
         // Doesn't exist
         else
-            return num_records;
+            return 0;
     }
     // Remove node
     delete doomed_node;
-    return ++num_records;
+    num_records--;
+    return 1;
 };
 
 ListItem FlowList::generate() {

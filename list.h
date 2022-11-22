@@ -33,7 +33,7 @@ class FlowList{
     //    list is unchanged.
     //    Otherwise exactly one node with 
     //    its item == itemA is removed.
-    //    Returns number of records
+    //    Returns 1 for successful deletion, 0 otherwise.
 
     void print() const;
     // PROMISES:
