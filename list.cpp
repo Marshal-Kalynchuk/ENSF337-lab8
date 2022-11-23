@@ -13,17 +13,6 @@ FlowList::~FlowList()
   destroy();
 };
 
-void FlowList::print() const
-{
-    cout << '[';
-    if (headM != 0) {
-        cout << " [" << headM->item.year << ", " << headM->item.flow << ']';
-        for (const Node *p = headM->next; p != 0; p = p->next)
-            cout << ", [" << p->item.year << ", " << p->item.flow << ']';
-    }
-    cout << " ]\n";
-};
-
 int FlowList::insert(const int year, const double flow)
 {
     Node *new_node = new Node;

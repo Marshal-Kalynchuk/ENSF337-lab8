@@ -74,7 +74,7 @@ int readData(FlowList* flow_list, const char *file_path){
       exit(1);
     }
   }
-  // Clearn up and return num records
+  // Clean up and return num records
   file.close();
   return (*flow_list).get_num_records();
 };

@@ -136,5 +136,3 @@ void OLList::copy(const OLList& source)
         p = p->next;
     }
 }
-
-

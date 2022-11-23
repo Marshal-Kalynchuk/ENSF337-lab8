@@ -8,7 +8,7 @@
 
 void displayHeader();
 // PROMISES
-//    Displays the introcution to the screen.
+//    Displays the introduction to the screen.
 
 int readData(FlowList* list, const char *file_path);
 // PROMISES
@@ -18,7 +18,7 @@ int readData(FlowList* list, const char *file_path);
 
 int menu(void);
 // PROMISES
-//    Displays a menu and return the users choice.
+//    Displays a menu and returns the user's choice.
 //    (Integer from 1 to 5)
 
 void display(FlowList* list);
@@ -41,7 +41,7 @@ int removeData(FlowList* flow_list);
 
 double average(double sum, int count);
 // PROMISES
-//   Returns the average of sum over count.
+//    Returns the average of sum over count.
 
 void saveData(FlowList *list, const char *file_path);
 //  PROMISES
@@ -49,6 +49,6 @@ void saveData(FlowList *list, const char *file_path);
 
 void pressEnter(void);
 //  PROMISES:
-//    Waits for user to press enter.
+//    Waits for the user to press enter.
 
 #endif

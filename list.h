@@ -33,17 +33,11 @@ class FlowList{
     //    its item == itemA is removed.
     //    Returns 1 for successful deletion, 0 otherwise.
 
-    void print() const;
-    // PROMISES:
-    //   Prints items in list on a single line, with commas separating
-    //   the items and square brackets marking the ends of the list.
-    // NOTE:
-    //   This is different from the print function presented in lectures.
-
     ListItem generate();
     // PROMISES:
     //    Cycles through the list, returning the list items of the list
     //    Return ListItem{-99,-99} at the end of the list or if the list is empty.
+
     int get_num_records();
     // PROMISES:
     //    Return the number of records in the list.
@@ -53,7 +47,7 @@ class FlowList{
     Node* posM;
     int num_records = 0;
     int destroy(); 
-    // PROMISES: destoyes a list.
+    // PROMISES: destoys a list.
     //    Returns 1 after the list is destroyed
 };
 #endif
